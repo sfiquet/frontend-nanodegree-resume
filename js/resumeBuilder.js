@@ -106,3 +106,10 @@ var education = {
 		}
 	]
 };
+
+$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+if (bio.skills.length) {
+	$("#header").append(HTMLskillsStart);
+	$("#skills").append(HTMLskills.replace("%data%", bio.skills.join(", ")));
+}

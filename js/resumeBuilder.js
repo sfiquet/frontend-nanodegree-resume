@@ -5,7 +5,13 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name": "Sylvie Fiquet",
 	"role": "Web Developer",
-	"contact": "sfiquetdev@gmail.com",
+	"contact": {
+		"mobile": "01234-1234",
+		"email": "sfiquetdev@gmail.com",
+		"github": "sfiquet",
+		"twitter": "bla",
+		"location": "United Kingdom"
+	},
 	"picture": "images/fry.jpg",
 	"welcome": "Welcome to my Web Page!",
 	"skills": ["Programming", "Javascript", "Node.js", "Python", "TDD", "Git"]
@@ -14,7 +20,7 @@ var bio = {
 var formatted = {
 	"name": HTMLheaderName.replace("%data%", bio.name),
 	"role": HTMLheaderRole.replace("%data%", bio.role),
-	"contact": HTMLemail.replace("%data%", bio.contact),
+	"contact": HTMLemail.replace("%data%", bio.contact.email),
 	"picture": HTMLbioPic.replace("%data%", bio.picture),
 	"welcome": HTMLwelcomeMsg.replace("%data%", bio.welcome),
 	"skills": HTMLskills.replace("%data%", bio.skills.join(", "))

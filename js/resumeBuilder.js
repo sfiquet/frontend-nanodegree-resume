@@ -17,6 +17,18 @@ var bio = {
 	"skills": ["Programming", "Javascript", "Node.js", "Python", "TDD", "Git"]
 };
 
+var work = {};
+work.position = "Computer Science Teacher";
+work.employer = "Priory Group";
+work.years = "2012-2013";
+work.city = "Godalming";
+
+var education = {};
+education["name"] = "University René Descartes Paris V";
+education["years"] = "1990-1991";
+education["city"] = "Paris, France";
+
+
 var formatted = {
 	"name": HTMLheaderName.replace("%data%", bio.name),
 	"role": HTMLheaderRole.replace("%data%", bio.role),
@@ -34,4 +46,13 @@ $("#header").append(formatted.welcome);
 $("#header").append(formatted.skills);
 $("#footerContacts").append(formatted.contact);
 
+$("#workExperience").append(HTMLworkStart);
+$("#workExperience").append(HTMLworkEmployer.replace("%data%", work["employer"]));
+$("#workExperience").append(HTMLworkTitle.replace("%data%", work["position"]));
+$("#workExperience").append(HTMLworkDates.replace("%data%", work["years"]));
+$("#workExperience").append(HTMLworkLocation.replace("%data%", work["city"]));
 
+$("#education").append(HTMLschoolStart);
+$("#education").append(HTMLschoolName.replace("%data%", education.name));
+$("#education").append(HTMLschoolDates.replace("%data%", education.years));
+$("#education").append(HTMLschoolLocation.replace("%data%", education.city));

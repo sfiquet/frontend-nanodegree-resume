@@ -117,16 +117,23 @@ if (bio.skills.length) {
 	});
 }
 
-var employer, title;
-work.jobs.forEach(function(currJob){
+var displayWork = function() {
 
-	$("#workExperience").append(HTMLworkStart);
+	var employer, title;
 
-	employer = HTMLworkEmployer.replace("%data%", currJob.employer);
-	title = HTMLworkTitle.replace("%data%", currJob.title);
+	work.jobs.forEach(function(currJob){
 
-	$(".work-entry:last").append(employer + title);
-	$(".work-entry:last").append(HTMLworkLocation.replace("%data%", currJob.location));
-	$(".work-entry:last").append(HTMLworkDates.replace("%data%", currJob.dates));
-	$(".work-entry:last").append(HTMLworkDescription.replace("%data%", currJob.description));
-});
+		$("#workExperience").append(HTMLworkStart);
+
+		employer = HTMLworkEmployer.replace("%data%", currJob.employer);
+		title = HTMLworkTitle.replace("%data%", currJob.title);
+
+		$(".work-entry:last").append(employer + title);
+		$(".work-entry:last").append(HTMLworkLocation.replace("%data%", currJob.location));
+		$(".work-entry:last").append(HTMLworkDates.replace("%data%", currJob.dates));
+		$(".work-entry:last").append(HTMLworkDescription.replace("%data%", currJob.description));
+	});
+};
+
+displayWork();
+

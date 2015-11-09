@@ -111,5 +111,19 @@ $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
 $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
 if (bio.skills.length) {
 	$("#header").append(HTMLskillsStart);
-	$("#skills").append(HTMLskills.replace("%data%", bio.skills.join(", ")));
+
+	bio.skills.forEach(function(skill){
+		$("#skills").append(HTMLskills.replace("%data%", skill));
+	});
 }
+
+var employer, title;
+work.jobs.forEach(function(currJob){
+
+	$("#workExperience").append(HTMLworkStart);
+
+	employer = HTMLworkEmployer.replace("%data%", currJob.employer);
+	title = HTMLworkTitle.replace("%data%", currJob.title);
+
+	$(".work-entry:last").append(employer + title);
+});

@@ -30,19 +30,19 @@ var work = {
 			"title": "Software Engineer",
 			"location": "Farnborough, UK",
 			"dates": "1994-1999",
-			"description": "Developed desktop software for Windows in the domains of sales forecasting and analysis and supply chain management. Design, coding, testing, maintenance, documentation, communication with QA and trainers"
+			"description": "Developed desktop software for Windows in the domains of sales forecasting and analysis and optimisation of orders. Design, coding, testing, maintenance, documentation, communication with QA and trainers"
 		},
 		{
 			"employer": "Banque de France",
-			"title": "Contractor",
+			"title": "Software Development Contractor",
 			"location": "Marne-la-Vallée, France",
 			"dates": "1992-1993",
 			"description": "Maintain, extend and document expert system written in C, liaise with deployment team and with knowledge engineer. Prototyped migration from DOS to Windows."
 		},
 		{
 			"employer": "Société Générale",
-			"title": "Contractor",
-			"location": "Paris",
+			"title": "Software Development Contractor",
+			"location": "Paris, France",
 			"dates": "1991-1992",
 			"description": "Wrote a UI generation tool for options trading applications."
 		}
@@ -126,4 +126,7 @@ work.jobs.forEach(function(currJob){
 	title = HTMLworkTitle.replace("%data%", currJob.title);
 
 	$(".work-entry:last").append(employer + title);
+	$(".work-entry:last").append(HTMLworkLocation.replace("%data%", currJob.location));
+	$(".work-entry:last").append(HTMLworkDates.replace("%data%", currJob.dates));
+	$(".work-entry:last").append(HTMLworkDescription.replace("%data%", currJob.description));
 });

@@ -3,7 +3,7 @@ This is empty on purpose! Your code to build the resume will go here.
  */
 
 var bio = {
-	"name": "Sylvie Fiquet",
+	"name": " Sylvie Fiquet ",
 	"role": "Web Developer",
 	"welcomeMessage": "Welcome to my Web Page!",
 	"contacts": {
@@ -107,16 +107,6 @@ var education = {
 	]
 };
 
-$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-if (bio.skills.length) {
-	$("#header").append(HTMLskillsStart);
-
-	bio.skills.forEach(function(skill){
-		$("#skills").append(HTMLskills.replace("%data%", skill));
-	});
-}
-
 var displayWork = function() {
 
 	var employer, title;
@@ -135,5 +125,31 @@ var displayWork = function() {
 	});
 };
 
+var inName = function() {
+	
+	var result = "";
+	var nameArr = [];
+
+	nameArr = bio.name.trim().split(" ");
+	console.log(nameArr);
+	nameArr[0] = nameArr[0].slice(0, 1).toUpperCase() + nameArr[0].slice(1).toLowerCase();
+//	nameArr[0] = nameArr[0][0].toUpperCase() + nameArr[0].slice(1).toLowerCase();
+	nameArr[1] = nameArr[1].toUpperCase();
+
+	result = nameArr.join(" ");
+	return result;
+};
+
+$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+if (bio.skills.length) {
+	$("#header").append(HTMLskillsStart);
+
+	bio.skills.forEach(function(skill){
+		$("#skills").append(HTMLskills.replace("%data%", skill));
+	});
+}
+
 displayWork();
 
+$("#main").append(internationalizeButton);

@@ -55,9 +55,32 @@ var projects = {
 			"title": "Monster Workshop",
 			"dates": "2015-ongoing",
 			"description": "Monster customisation utility for Pathfinder game masters, written with Node.js and Express",
-			"images": ["example.com/image1", "example.com/image2"]
+			"images": ["http://lorempixel.com/300/170/nature", "http://lorempixel.com/300/170/abstract"]
+		},
+		{
+			"title": "Test",
+			"dates": "2015",
+			"description": "This is a test.",
+			"images": ["http://lorempixel.com/300/170/nature", "http://lorempixel.com/300/170/abstract"]
 		}
 	]
+};
+
+projects.display = function() {
+
+	$("#projects").append(HTMLprojectStart);
+
+	this.projects.forEach(function(project) {
+
+		$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", project.title));
+		$(".project-entry:last").append(HTMLprojectDates.replace("%data%", project.dates));
+		$(".project-entry:last").append(HTMLprojectDescription.replace("%data%", project.description));
+
+		project.images.forEach(function(img) {
+
+			$(".project-entry:last").append(HTMLprojectImage.replace("%data%", img));
+		});
+	});
 };
 
 var education = {
@@ -133,7 +156,6 @@ var inName = function() {
 	nameArr = bio.name.trim().split(" ");
 	console.log(nameArr);
 	nameArr[0] = nameArr[0].slice(0, 1).toUpperCase() + nameArr[0].slice(1).toLowerCase();
-//	nameArr[0] = nameArr[0][0].toUpperCase() + nameArr[0].slice(1).toLowerCase();
 	nameArr[1] = nameArr[1].toUpperCase();
 
 	result = nameArr.join(" ");
@@ -151,5 +173,4 @@ if (bio.skills.length) {
 }
 
 displayWork();
-
-$("#main").append(internationalizeButton);
+projects.display();

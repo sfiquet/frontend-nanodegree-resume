@@ -5,15 +5,48 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name": " Sylvie Fiquet ",
 	"role": "Web Developer",
-	"welcomeMessage": "Welcome to my Web Page!",
+	"bioPic": "images/fry.jpg",
+	"welcomeMessage": "Hi, I'm Sylvie! I'm learning website development. This is my resume.",
 	"contacts": {
-		"mobile": "",
+		"mobile": "01234-123456",
 		"email": "sfiquetdev@gmail.com",
 		"github": "sfiquet",
-		"twitter": "",
+		"twitter": "example",
 		"location": "Guildford, UK"
 	},
 	"skills": [ "Programming", "Javascript", "Node.js", "Python", "TDD", "Git" ]
+};
+
+bio.display = function() {
+
+	var displayContacts = function(elementId, contacts) {
+		$(elementId).append(HTMLmobile.replace("%data%", contacts.mobile));
+		$(elementId).append(HTMLemail.replace("%data%", contacts.email));
+		$(elementId).append(HTMLtwitter.replace("%data%", contacts.twitter));
+		$(elementId).append(HTMLgithub.replace("%data%", contacts.github));
+		$(elementId).append(HTMLlocation.replace("%data%", contacts.location));
+	};
+
+	
+	$("#header").prepend(HTMLheaderRole.replace("%data%", this.role));
+	$("#header").prepend(HTMLheaderName.replace("%data%", this.name));
+
+	displayContacts("#topContacts", this.contacts);
+	displayContacts("#footerContacts", this.contacts);
+
+	$("#header").append(HTMLbioPic.replace("%data%", this.bioPic));
+	$("#header").append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage));
+
+
+	if (this.skills.length) {
+	
+		$("#header").append(HTMLskillsStart);
+
+		this.skills.forEach(function(skill) {
+
+			$("#skills").append(HTMLskills.replace("%data%", skill));
+		});
+	}
 };
 
 var work = {
@@ -47,6 +80,24 @@ var work = {
 			"description": "Wrote a UI generation tool for options trading applications."
 		}
 	]
+};
+
+work.display = function() {
+
+	var employer, title;
+
+	this.jobs.forEach(function(currJob){
+
+		$("#workExperience").append(HTMLworkStart);
+
+		employer = HTMLworkEmployer.replace("%data%", currJob.employer);
+		title = HTMLworkTitle.replace("%data%", currJob.title);
+
+		$(".work-entry:last").append(employer + title);
+		$(".work-entry:last").append(HTMLworkLocation.replace("%data%", currJob.location));
+		$(".work-entry:last").append(HTMLworkDates.replace("%data%", currJob.dates));
+		$(".work-entry:last").append(HTMLworkDescription.replace("%data%", currJob.description));
+	});
 };
 
 var projects = {
@@ -96,7 +147,7 @@ var education = {
 		{
 			"name": "University Rennes I, Faculté de Médecine",
 			"location": "Rennes, France",
-			"degree": "Moved to Computer Science after 5 years so did not graduate as a MD",
+			"degree": "dropped out",
 			"majors": ["Medicine"],
 			"dates": "1985-1990",
 			"url": "http://www.medecine.univ-rennes1.fr"
@@ -130,23 +181,33 @@ var education = {
 	]
 };
 
-var displayWork = function() {
+education.display = function() {
 
-	var employer, title;
+	this.schools.forEach(function(school) {
+		
+		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(HTMLschoolName.replace("%data%", school.name) + HTMLschoolDegree.replace("%data%", school.degree));
+		$(".education-entry:last").append(HTMLschoolDates.replace("%data%", school.dates));
+		$(".education-entry:last").append(HTMLschoolLocation.replace("%data%", school.location));
 
-	work.jobs.forEach(function(currJob){
+		school.majors.forEach(function(major) {
 
-		$("#workExperience").append(HTMLworkStart);
-
-		employer = HTMLworkEmployer.replace("%data%", currJob.employer);
-		title = HTMLworkTitle.replace("%data%", currJob.title);
-
-		$(".work-entry:last").append(employer + title);
-		$(".work-entry:last").append(HTMLworkLocation.replace("%data%", currJob.location));
-		$(".work-entry:last").append(HTMLworkDates.replace("%data%", currJob.dates));
-		$(".work-entry:last").append(HTMLworkDescription.replace("%data%", currJob.description));
+			$(".education-entry:last").append(HTMLschoolMajor.replace("%data%", major));
+		});
 	});
+
+	if (this.onlineCourses) {
+		$("#education").append(HTMLonlineClasses);
+
+		this.onlineCourses.forEach(function(course) {
+			$("#education").append(HTMLschoolStart);
+			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", course.title) + HTMLonlineSchool.replace("%data%", course.school));
+			$(".education-entry:last").append(HTMLonlineDates.replace("%data%", course.dates));
+			$(".education-entry:last").append(HTMLonlineURL.replace("%data%", course.url));
+		});
+	}
 };
+
 
 var inName = function() {
 	
@@ -162,16 +223,9 @@ var inName = function() {
 	return result;
 };
 
-$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-if (bio.skills.length) {
-	$("#header").append(HTMLskillsStart);
 
-	bio.skills.forEach(function(skill){
-		$("#skills").append(HTMLskills.replace("%data%", skill));
-	});
-}
-
-displayWork();
+bio.display();
+work.display();
 projects.display();
+education.display();
 $("#mapDiv").append(googleMap);

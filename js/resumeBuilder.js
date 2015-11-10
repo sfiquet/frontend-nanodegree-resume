@@ -11,7 +11,7 @@ var bio = {
 		"email": "sfiquetdev@gmail.com",
 		"github": "sfiquet",
 		"twitter": "",
-		"location": "United Kingdom"
+		"location": "Guildford, UK"
 	},
 	"skills": [ "Programming", "Javascript", "Node.js", "Python", "TDD", "Git" ]
 };
@@ -174,3 +174,4 @@ if (bio.skills.length) {
 
 displayWork();
 projects.display();
+$("#mapDiv").append(googleMap);

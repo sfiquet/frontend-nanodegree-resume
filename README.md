@@ -1,3 +1,13 @@
+# Udacity Resume Project
+This is my version of the Interactive Resume project from the [Udacity Front-End Developer nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). Note that in its current state this is a technical exercise, not a finished resume.
+
+It has not been submitted as I am doing the free version of the course. If I ever submit it, the following change will be necessary:
+
+* Transform `education.schools[n].dates` into an integer. I made it a string because I wanted to highlight the 5 years I spent studying medicine, not the fact that I dropped out.
+
+The original project specification can be read below:
+
+
 ## How do I complete this project?
 
 1. Go to the [Javascript Basics course](https://www.udacity.com/course/ud804) and select "View Course Materials."

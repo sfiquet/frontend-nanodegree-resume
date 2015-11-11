@@ -5,8 +5,6 @@ This is empty on purpose! Your code to build the resume will go here.
 var bio = {
 	"name": " Sylvie Fiquet ",
 	"role": "Web Developer",
-	"bioPic": "images/fry.jpg",
-	"welcomeMessage": "Hi, I'm Sylvie! I'm learning website development. This is my resume.",
 	"contacts": {
 		"mobile": "01234-123456",
 		"email": "sfiquetdev@gmail.com",
@@ -14,7 +12,9 @@ var bio = {
 		"twitter": "example",
 		"location": "Guildford, UK"
 	},
-	"skills": [ "Programming", "Javascript", "Node.js", "Python", "TDD", "Git" ]
+	"welcomeMessage": "Hi, I'm Sylvie! I'm learning website development. This is my resume.",
+	"skills": [ "Programming", "Javascript", "Node.js", "Python", "TDD", "Git" ],
+	"biopic": "images/fry.jpg"
 };
 
 bio.display = function() {
@@ -34,7 +34,7 @@ bio.display = function() {
 	displayContacts("#topContacts", this.contacts);
 	displayContacts("#footerContacts", this.contacts);
 
-	$("#header").append(HTMLbioPic.replace("%data%", this.bioPic));
+	$("#header").append(HTMLbioPic.replace("%data%", this.biopic));
 	$("#header").append(HTMLwelcomeMsg.replace("%data%", this.welcomeMessage));
 
 
@@ -106,12 +106,6 @@ var projects = {
 			"title": "Monster Workshop",
 			"dates": "2015-ongoing",
 			"description": "Monster customisation utility for Pathfinder game masters, written with Node.js and Express",
-			"images": ["http://lorempixel.com/300/170/nature", "http://lorempixel.com/300/170/abstract"]
-		},
-		{
-			"title": "Test",
-			"dates": "2015",
-			"description": "This is a test.",
 			"images": ["http://lorempixel.com/300/170/nature", "http://lorempixel.com/300/170/abstract"]
 		}
 	]

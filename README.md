@@ -1,4 +1,6 @@
 # Udacity Resume Project
+[Go to the webpage](http://sfiquet.github.io/frontend-nanodegree-resume/)
+
 This is my version of the Interactive Resume project from the [Udacity Front-End Developer nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). Note that in its current state this is a technical exercise, not a finished resume.
 
 It has not been submitted as I am doing the free version of the course. If I ever submit it, the following change will be necessary:
